@@ -1,7 +1,9 @@
 <?php get_header();?>
 
+<!-- Banner-->
+<?php get_template_part('components/home_banner'); ?>
 <!-- Blog-->
-<?php get_template_part('components/blog.php'); ?>
+<?php get_template_part('components/all_blogs'); ?>
 <!-- Services-->
 <?php get_template_part('components/service'); ?>
 <!-- Portfolio-->
