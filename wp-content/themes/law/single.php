@@ -32,9 +32,14 @@ get_header();
                         }
                         ?>
                     </div>
-
                 </div>
+                <div class="col-lg-12">
+                    <?php
+                    next_post_link();
+                    previous_post_link()
 
+                    ?>
+                </div>
         </div>
     </div>
 </section>

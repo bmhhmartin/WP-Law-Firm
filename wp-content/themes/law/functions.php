@@ -4,10 +4,18 @@
         load_theme_textdomain('law');
         add_theme_support('title-tag');
         add_theme_support('post-thumbnails' );
-
     }
 
     add_action('after_setup_theme','law_theme_bootstrapping');
+
+    function law_menu_added() {
+        register_nav_menus( array(
+            'top_menu'=>'Navigation Menu',
+            'footer_menu'=> 'Footer Menu',
+        ));
+    }
+    add_action('init', 'law_menu_added');
+
 
     function law_assets(){
         wp_enqueue_style('main-style-file', get_template_directory_uri().'/css/styles.css', null, time());

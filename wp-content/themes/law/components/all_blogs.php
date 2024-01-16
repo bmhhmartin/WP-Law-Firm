@@ -1,21 +1,30 @@
-<section class="page-section bg-light" id="portfolio" style="padding-top: 150px">
+<section class="page-section bg-light" style="padding-top: 150px">
     <div class="container">
         <div class="text-center">
             <h2 class="section-heading text-uppercase">All Posts</h2>
             <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
         </div>
-        <div class="row text-center" <?php post_class();?>>
+
+
+
+        <div class="row">
             <?php
-            while (have_posts()){
-                the_post();
-                ?>
+            $post_list = get_posts( array(
+                'orderby'    => 'menu_order',
+                'sort_order' => 'desc',
+                'post_status' => 'publish'
+            ) );
+
+            foreach ( $post_list as $post ) {
+                setup_postdata( $post ); ?>
+
                 <div class="col-lg-4 col-sm-6 mb-4">
                     <div class="portfolio-item">
                         <a href="<?php the_permalink();?>" class="portfolio-link">
                             <?php
-                                if (has_post_thumbnail()){
-                                    the_post_thumbnail('large', array('class'=>'img-fluid', 'alt'=>'post image'));;
-                                }
+                            if (has_post_thumbnail()){
+                                the_post_thumbnail('large', array('class'=>'img-fluid', 'alt'=>'post image'));;
+                            }
                             ?>
                             <div class="portfolio-caption" style="text-align: left">
                                 <div class="portfolio-caption-heading">
@@ -35,10 +44,12 @@
                     </div>
                 </div>
                 <?php
+                wp_reset_postdata();
             }
-            ?>
 
+            ?>
         </div>
+
     </div>
 </section>
 

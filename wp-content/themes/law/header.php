@@ -16,21 +16,28 @@
     <body id="page-top" <?php body_class();?>>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand" style="color: #ff005c">LAW Firm</a>
+            <div class="container align-items-center">
+                <a href="<?php echo get_site_url(); ?>" class="navbar-brand" style="color: #ff005c">LAW Firm</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                    </ul>
+                    <?php
+                    wp_nav_menu(
+                        array(
+                            'theme_location'       => 'top_menu',
+                            'container'            => 'section',
+                            'menu_id'              => 'navbarResponsive',
+                            'menu_class'           => 'navbar-nav text-uppercase ms-auto py-4 py-lg-0 primary__menu', //ul class
+                            'link_before'          => '',
+                            'link_after'           => '',
+                            'items_wrap'           => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                        )
+                    )
+                    ?>
                 </div>
+
+
             </div>
         </nav>
